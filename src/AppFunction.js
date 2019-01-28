@@ -2,18 +2,42 @@
  * @Author: Nate
  * @Date:   2019-01-28 14:49:39
  * @Last Modified by:   Nate
- * @Last Modified time: 2019-01-28 15:00:41
+ * @Last Modified time: 2019-01-28 15:29:50
  */
 import React, { useState } from "react";
 
 const App = () => {
   const [count, setCount] = useState(0);
+  const [isOn, setIsOn] = useState(false);
 
   const incrementCount = () => {
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1);
   };
 
-  return <button onClick={incrementCount}>i was clicked {count} times</button>;
+  const toggleLight = () => {
+    setIsOn(prevIsOn => !prevIsOn);
+  };
+
+  return (
+    <React.Fragment>
+      <h2>Counter</h2>
+      <button onClick={incrementCount}>i was clicked {count} times</button>;
+      <h2>Toggle Light</h2>
+      <img
+        src={
+          isOn
+            ? "https://icon.now.sh/highlight/fd0"
+            : "https://icon.now.sh/highlight/aaa"
+        }
+        style={{
+          height: "50px",
+          width: "50px"
+        }}
+        alt="Flashlight"
+        onClick={toggleLight}
+      />
+    </React.Fragment>
+  );
 };
 
 export default App;
