@@ -4,10 +4,19 @@ import ReactDOM from "react-dom";
 // import App from "./AppFunction";
 // import App from "./Login"
 // import App from "./Register";
+// import App from "./HackerNewsSearch";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+export const UserContext = React.createContext();
+const username = "NATE";
+
+ReactDOM.render(
+  <UserContext.Provider value={username}>
+    <App />
+  </UserContext.Provider>,
+  document.getElementById("root")
+);
 
 if (module.hot) {
   module.hot.accept();
